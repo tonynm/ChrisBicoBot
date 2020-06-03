@@ -101,5 +101,5 @@ async def on_message(message):
 	if message.content.startswith('cbhelp'): #Bot displays all available commands
 		await message.channel.send('List of commands for Chris Bico Bot:\n-cbhello: Say hello!\n-cbbico: <Insert Emoji ID>\n-cb@: But where you at?\n-cbcp: Get a random catchphrase. Collect \'em all! (More will be added)\n-cbpic: Get a random photo of Chris Rico. Catch \'em all! (More will be added)\n-cbcom: Compliment Chris Rico!')
 		
-client.run('NzEzMTU5NzQ2NzM5NTAzMTM1.XscRrw.KrGinC0xLHOPibqcMokTeV-Pguw')
+client.run('Insert Bot Token here')
 
