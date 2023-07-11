@@ -6,6 +6,16 @@ import datetime
 random.seed()
 
 description = "BicoBot is a bot modelled after a friend of mine"
+
+############## SECTION FOR ALL THE LISTS I WILL USE ##################
+cpList = ['Shaking my head', 'Gotta do my dailies', 'Whatcha mean?', 'Pachinko Luck', 'Yeah, Yeah', 'What up. What up. What uuuuuup', 
+'What the hell, man', 'Hey, that\'s pretty good!', 'Do it', 'Yeah, alright', 'Now hold on', 'China, china, china', 'Wait a minute', 'You trying to play sum Fornite?', 
+'I forgot to watch Pawn Stars', 'Psht, Psht', 'Exaaaaaactly']
+
+picList = ['ChrisPhoto.png', 'ChrisPhoto1.png', 'ChrisPhoto2.png', 'ChrisPhoto3.png', 'ChrisPhoto4.png', 'ChrisPhoto5.png',
+'ChrisPhoto6.png', 'ChrisPhoto7.png', 'ChrisPhoto8.png', 'ChrisPhoto9.png', 'ChrisPhoto10.png', 'ChrisPhoto11.png', 'ChrisPhoto12.png']
+######################################################################
+
 intents = discord.Intents.all()
 intents.members = True
 
@@ -41,77 +51,14 @@ async def at(ctx, user: discord.User=None):
 		
 @bot.command()
 async def cp(ctx):
-	number = random.randint(0, 19)
-	if (number == 0):
-		await ctx.channel.send('Shaking my head')
-	elif (number == 1):
-		await ctx.channel.send('Gotta do my dailies')
-	elif (number == 2):
-		await ctx.channel.send('Whatcha mean?')
-	elif (number == 3):
-		await ctx.channel.send('Pachinko Luck')
-	elif (number == 4):
-		await ctx.channel.send('Yeah, Yeah')
-	elif (number == 5):
-		await ctx.channel.send('The Fuck?')
-	elif (number == 6):
-		await ctx.channel.send('What up. What up. What uuuuuup')
-	elif (number == 7):
-		await ctx.channel.send('What the hell, man')
-	elif (number == 8):
-		await ctx.channel.send('Hey, that\'s pretty good!')
-	elif (number == 9):
-		await ctx.channel.send('Do it')
-	elif (number == 10):
-		await ctx.channel.send('Yeah, alright')
-	elif (number == 11):
-		await ctx.channel.send('Now hold on')
-	elif (number == 12):
-		await ctx.channel.send('China, china, china')
-	elif (number == 13):
-		await ctx.channel.send('Wait a minute')
-	elif (number == 14):
-		await ctx.channel.send('You trying to play sum Fornite?')
-	elif (number == 15):
-		await ctx.channel.send('I forgot to watch Pawn Stars')
-	elif (number == 16):
-		await ctx.channel.send('You stupid bitch')
-	elif (number == 17):
-		await ctx.channel.send('Psht, Psht')
-	elif (number == 18):
-		await ctx.channel.send('Exaaaaaactly')
-	elif (number == 19):
-		await ctx.channel.send('Eat ***ASS***')
-		
+	number = random.randint(0, len(cpList))
+	await ctx.channel.send(cpList[number])
+	
 @bot.command()
 async def pic(ctx):
-	number = random.randint(0,12)
-	if(number == 0):
-		await ctx.channel.send(file=discord.File('ChrisPhoto.png'))
-	elif (number == 1):
-		await ctx.channel.send(file=discord.File('ChrisPhoto1.png'))
-	elif (number == 2):
-		await ctx.channel.send(file=discord.File('ChrisPhoto2.png'))
-	elif (number == 3):
-		await ctx.channel.send(file=discord.File('ChrisPhoto3.png'))
-	elif (number == 4):
-		await ctx.channel.send(file=discord.File('ChrisPhoto4.png'))
-	elif (number == 5):
-		await ctx.channel.send(file=discord.File('ChrisPhoto5.png'))
-	elif (number == 6):
-		await ctx.channel.send(file=discord.File('ChrisPhoto6.png'))
-	elif (number == 7):
-		await ctx.channel.send(file=discord.File('ChrisPhoto7.png'))
-	elif (number == 8):
-		await ctx.channel.send(file=discord.File('ChrisPhoto8.png'))
-	elif (number == 9):
-		await ctx.channel.send(file=discord.File('ChrisPhoto9.png'))
-	elif (number == 10):
-		await ctx.channel.send(file=discord.File('ChrisPhoto10.png'))
-	elif (number == 11):
-		await ctx.channel.send(file=discord.File('ChrisPhoto11.png'))
-	elif (number == 12):
-		await ctx.channel.send(file=discord.File('ChrisPhoto12.png'))
+	number = random.randint(0,len(picList))
+	await ctx.channel.send(file=discord.File(picList[number]))
+		
 @bot.command()
 async def com(ctx, user: discord.User=None):
 	if not user:
