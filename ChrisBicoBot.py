@@ -17,6 +17,8 @@ picList = ['ChrisPhoto.png', 'ChrisPhoto1.png', 'ChrisPhoto2.png', 'ChrisPhoto3.
 
 comList = ['{} You thicc bro', '{} Here\'s a mint, because you got the Breath of the Wild', '{} You\'ll make a fine addition to my collection', 
 '{} You make me go "Yeah Alright"', '{} All aboard the Bico Express *choo choo*', '{} You looking like a fresh flour tortilla']
+
+dateList = ['{} is Monday', '{} is Tuesday', '{} is Wednesday', '{} is Thursday', '{} is Friday', '{} is Saturday', '{} is Sunday']
 ######################################################################
 
 intents = discord.Intents.all()
@@ -72,7 +74,6 @@ async def com(ctx, user: discord.User=None):
 	else:
 		await ctx.channel.send(comList[number].format(user.mention))
 
-
 @bot.command()
 async def bye(ctx, user: discord.User = None):
 	number = random.randint(0,2)
@@ -86,38 +87,15 @@ async def bye(ctx, user: discord.User = None):
 @bot.command()
 async def date(ctx):
 	day = datetime.datetime.today().weekday()
-	if(day == 0):
-		await ctx.channel.send('Today is Monday')
-	elif(day == 1):
-		await ctx.channel.send('Today is Tuesday')
-	elif(day == 2):
-		await ctx.channel.send('Today is Wednesday')
-	elif(day == 3):
-		await ctx.channel.send('Today is Thursday')
-	elif(day == 4):
-		await ctx.channel.send('Today is Friday')
-	elif(day == 5):
-		await ctx.channel.send('Today is Saturday')
-	elif(day == 6):
-		await ctx.channel.send('Today is Sunday')
+	await ctx.channel.send(dateList[day].format('Today'))
 		
 @bot.command()
 async def tomorrow(ctx):
 	day = datetime.datetime.today().weekday()
-	if(day == 0):
-		await ctx.channel.send('Tomorrow is Tuesday')
-	elif(day == 1):
-		await ctx.channel.send('Tomorrow is Wednesday')
-	elif(day == 2):
-		await ctx.channel.send('Tomorrow is Thursday')
-	elif(day == 3):
-		await ctx.channel.send('Tomorrow is Friday')
-	elif(day == 4):
-		await ctx.channel.send('Tomorrow is Saturday')
-	elif(day == 5):
-		await ctx.channel.send('Tomorrow is Sunday')
-	elif(day == 6):
-		await ctx.channel.send('Tomorrow is Monday')	
+	if(day == 6):
+		await ctx.channel.send(dateList[0].format('Tomorrow'))
+	else:
+		await ctx.channel.send(dateList[day+1].format('Tomorrow'))	
 		
 @bot.command()
 async def eightball(ctx):
