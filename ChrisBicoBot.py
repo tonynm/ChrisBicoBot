@@ -14,6 +14,9 @@ cpList = ['Shaking my head', 'Gotta do my dailies', 'Whatcha mean?', 'Pachinko L
 
 picList = ['ChrisPhoto.png', 'ChrisPhoto1.png', 'ChrisPhoto2.png', 'ChrisPhoto3.png', 'ChrisPhoto4.png', 'ChrisPhoto5.png',
 'ChrisPhoto6.png', 'ChrisPhoto7.png', 'ChrisPhoto8.png', 'ChrisPhoto9.png', 'ChrisPhoto10.png', 'ChrisPhoto11.png', 'ChrisPhoto12.png']
+
+comList = ['{} You thicc bro', '{} Here\'s a mint, because you got the Breath of the Wild', '{} You\'ll make a fine addition to my collection', 
+'{} You make me go "Yeah Alright"', '{} All aboard the Bico Express *choo choo*', '{} You looking like a fresh flour tortilla']
 ######################################################################
 
 intents = discord.Intents.all()
@@ -51,44 +54,23 @@ async def at(ctx, user: discord.User=None):
 		
 @bot.command()
 async def cp(ctx):
-	number = random.randint(0, len(cpList))
+	number = random.randint(0, len(cpList)-1)
 	await ctx.channel.send(cpList[number])
 	
 @bot.command()
 async def pic(ctx):
-	number = random.randint(0,len(picList))
+	number = random.randint(0,len(picList)-1)
 	await ctx.channel.send(file=discord.File(picList[number]))
 		
 @bot.command()
 async def com(ctx, user: discord.User=None):
+	number = random.randint(0, len(comList)-1)
+	ricoMention = '<@209140413573890048>'
+	
 	if not user:
-		number = random.randint(0,5)
-		if(number == 0):
-			await ctx.channel.send('<@209140413573890048> You thicc bro')
-		elif (number == 1):
-			await ctx.channel.send('<@209140413573890048> Here\'s a mint, because you got the Breath of the Wild')
-		elif (number == 2):
-			await ctx.channel.send('<@209140413573890048> You\'ll make a fine addition to my collection')
-		elif (number == 3):
-			await ctx.channel.send('<@209140413573890048> You make me go "Yeah Alright"')
-		elif (number == 4):
-			await ctx.channel.send('<@209140413573890048> All aboard the Bico Express *choo choo*')	
-		else:
-			await ctx.channel.send('<@209140413573890048> You looking like a fresh flour tortilla')
+		await ctx.channel.send(comList[number].format(ricoMention))
 	else:
-		number = random.randint(0,5)
-		if(number == 0):
-			await ctx.channel.send('{} You thicc bro'.format(user.mention))
-		elif(number == 1):
-			await ctx.channel.send('{} Here\'s a mint, because you got the Breath of the Wild'.format(user.mention))
-		elif(number == 2):
-			await ctx.channel.send('{} You\'ll make a fine addition to my collection'.format(user.mention))
-		elif(number == 3):
-			await ctx.channel.send('{} You make me go "Yeah Alright"'.format(user.mention))
-		elif(number == 4):
-			await ctx.channel.send('{} All aboard the Bico Express *choo choo*'.format(user.mention))
-		else:
-			await ctx.channel.send('{} You looking like a fresh flour tortilla'.format(user.mention))
+		await ctx.channel.send(comList[number].format(user.mention))
 
 
 @bot.command()
