@@ -19,6 +19,11 @@ comList = ['{} You thicc bro', '{} Here\'s a mint, because you got the Breath of
 '{} You make me go "Yeah Alright"', '{} All aboard the Bico Express *choo choo*', '{} You looking like a fresh flour tortilla']
 
 dateList = ['{} is Monday', '{} is Tuesday', '{} is Wednesday', '{} is Thursday', '{} is Friday', '{} is Saturday', '{} is Sunday']
+
+eightballList = ['As I see it, yes', 'Ask again later', 'Better not tell you now', 'Cannot predict now', 'Concentrate and ask again',
+"Don't count on it", 'It is certain', 'It is decidedly so', 'Most likely', 'My reply is no', 'My sources say no', 'Outlook not so good',
+'Outlook good', 'Reply hazy, try again', 'Signs point to yes', 'Very doubtful', 'Without a doubt', 'Yes', 'Yes – definitely', 
+'You may rely on it', 'POGGERS MY DOGGERS', 'Ask Tony']
 ######################################################################
 
 intents = discord.Intents.all()
@@ -95,55 +100,12 @@ async def tomorrow(ctx):
 	if(day == 6):
 		await ctx.channel.send(dateList[0].format('Tomorrow'))
 	else:
-		await ctx.channel.send(dateList[day+1].format('Tomorrow'))	
+		await ctx.channel.send(dateList[day+1].format('Tomorrow'))
 		
 @bot.command()
 async def eightball(ctx):
-	number = random.randint(0,21)
-	if(number == 0):
-		await ctx.channel.send('As I see it, yes')
-	elif(number == 1):
-		await ctx.channel.send('Ask again later')
-	elif(number == 2):
-		await ctx.channel.send('Better not tell you now')
-	elif(number == 3):
-		await ctx.channel.send('Cannot predict now')
-	elif(number == 4):
-		await ctx.channel.send('Concentrate and ask again')
-	elif(number == 5):
-		await ctx.channel.send("Don't count on it")
-	elif(number == 6):
-		await ctx.channel.send('It is certain')
-	elif(number == 7):
-		await ctx.channel.send('It is decidedly so')
-	elif(number == 8):
-		await ctx.channel.send('Most likely')
-	elif(number == 9):
-		await ctx.channel.send('My reply is no')
-	elif(number == 10):
-		await ctx.channel.send('My sources say no')
-	elif(number == 11):
-		await ctx.channel.send('Outlook not so good')
-	elif(number == 12):
-		await ctx.channel.send('Outlook good')
-	elif(number == 13):
-		await ctx.channel.send('Reply hazy, try again')
-	elif(number == 14):
-		await ctx.channel.send('Signs point to yes')
-	elif(number == 15):
-		await ctx.channel.send('Very doubtful')
-	elif(number == 16):
-		await ctx.channel.send('Without a doubt')
-	elif(number == 17):
-		await ctx.channel.send('Yes')
-	elif(number == 18):
-		await ctx.channel.send('Yes – definitely')
-	elif(number == 19):
-		await ctx.channel.send('You may rely on it')
-	elif(number == 20):
-		await ctx.channel.send('POGGERS MY DOGGERS')
-	elif(number == 21):
-		await ctx.channel.send('Ask Tony')
+	number = random.randint(0,len(eightballList)-1)
+	await ctx.channel.send(eightballList[number])
 		
 @bot.command()
 async def bday(ctx, user: discord.User=None):
