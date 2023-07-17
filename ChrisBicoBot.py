@@ -37,43 +37,43 @@ bot = commands.Bot(command_prefix='cb', description=description, intents=intents
 bot.remove_command("help")
 
 @bot.event
-async def on_ready():
+async def on_ready(): # When the bot successfully connects to the Discord Servers, this function is called
 	print('We have logged in as {}'.format(bot.user.name))
 	
 @bot.event 
-async def on_connect():
+async def on_connect(): # Shows the status of the bot as "Playing cbhelp" 
 	game = discord.Game('cbhelp')
 	await bot.change_presence(activity=game)	
 	
-@bot.command()
+@bot.command() # Function for cbhello command. If used without directly mentioning someone, then just prints out Hello. Otherwise, prints out a Hello to the mentioned user
 async def hello(ctx, user: discord.User=None):
 	if not user:
 		await ctx.channel.send("Hello")
 	else:
 		await ctx.channel.send("Hello {}".format(user.mention))
 		
-@bot.command()
+@bot.command() # Function that sends out the specified emoji if the emoji is available in the server
 async def bico(ctx):
 	await ctx.send("<:ChrisBico:662926031547662336>")
 	
-@bot.command()
+@bot.command() # Function that prints out a message at the predetermined user or the mentioned user if applicable
 async def at(ctx, user: discord.User=None):
 	if not user:
 		await ctx.channel.send("<@209140413573890048> But where you at?")
 	else:
 		await ctx.channel.send("{} But where you at?".format(user.mention))
 		
-@bot.command()
+@bot.command() # Function that prints out a catchphrase based on the randomly generated number. Catchphrases are stored in a list called cpList
 async def cp(ctx):
 	number = random.randint(0, len(cpList)-1)
 	await ctx.channel.send(cpList[number])
 	
-@bot.command()
+@bot.command() # Function that makes the bot post a picture in the server. Names of the picture files are stored in picList while the files are stored in the same directory as the ChrisBicoBot.py file
 async def pic(ctx):
 	number = random.randint(0,len(picList)-1)
 	await ctx.channel.send(file=discord.File(picList[number]))
 		
-@bot.command()
+@bot.command() # Function that prints out a compliment phrase to either the predetermined user (the one with the Rico mention user id) or the mentioned user if applicable. Compliments messages are stored in comList.
 async def com(ctx, user: discord.User=None):
 	number = random.randint(0, len(comList)-1)
 	ricoMention = '<@209140413573890048>'
@@ -83,7 +83,7 @@ async def com(ctx, user: discord.User=None):
 	else:
 		await ctx.channel.send(comList[number].format(user.mention))
 
-@bot.command()
+@bot.command() # Function that prints out a goodbye message to the mentioned user. There are three available goodbye messages.
 async def bye(ctx, user: discord.User = None):
 	number = random.randint(0,2)
 	if(number == 0):
@@ -93,12 +93,12 @@ async def bye(ctx, user: discord.User = None):
 	elif (number == 2):
 		await ctx.channel.send('{} Cya!'.format(user.mention))	
 		
-@bot.command()
+@bot.command() # Function that prints out the day of the week of today. 
 async def date(ctx):
 	day = datetime.datetime.today().weekday()
 	await ctx.channel.send(dateList[day].format('Today'))
 		
-@bot.command()
+@bot.command() # Function that prints out the day of the week that is tomorrow.
 async def tomorrow(ctx):
 	day = datetime.datetime.today().weekday()
 	if(day == 6):
@@ -106,19 +106,19 @@ async def tomorrow(ctx):
 	else:
 		await ctx.channel.send(dateList[day+1].format('Tomorrow'))
 		
-@bot.command()
+@bot.command() # Function that gives the BicoBot a Magic Eightball type of feature. The magic eightball messages are stored in eightballList.
 async def eightball(ctx):
 	number = random.randint(0,len(eightballList)-1)
 	await ctx.channel.send(eightballList[number])
 		
-@bot.command()
+@bot.command() # Function that lets the bot wish some a happy birthday. Either the predetermined user or a mentioned user if applicable.
 async def bday(ctx, user: discord.User=None):
 	if not user:
 		await ctx.send("<@209140413573890048> <:ChrisBico:662926031547662336> Happy Birthday! <:partying_face:751503332652089454>")
 	else:
 		await ctx.send("<:partying_face:751503332652089454> Happy Birthday, {} <:partying_face:751503332652089454>!".format(user.mention))	
 		
-@bot.command()
+@bot.command() # Function that prints out a message with all the available commands and their functions.
 async def help(ctx):
 	await ctx.channel.send(helpText)
 	
