@@ -7,6 +7,10 @@ random.seed()
 
 description = "BicoBot is a bot modelled after a friend of mine"
 
+helpText = """List of commands for Chris Bico Bot:\n-cbhello: Say hello!\n-cbbico: <:ChrisBico:662926031547662336>\n-cbat: But where you at?\n-cbcp: Get a random catchphrase. Collect \'em all! (More will be added)
+-cbpic: Get a random photo of Chris Rico. Catch \'em all! (More will be added)\n-cbcom: Compliment Chris Rico!\n-cbdate: BicoBot tells us the day of the week!
+-cbtomorrow: Bicobot tells us what day of week is tomorrow\n-cbeightball: Bicobot will act like a 8ball\n-cbbday: Celebrate someone\'s birthday! <:partying_face:751503332652089454>\n-cbbye: BicoBot says goodbye!"""
+
 ############## SECTION FOR ALL THE LISTS I WILL USE ##################
 cpList = ['Shaking my head', 'Gotta do my dailies', 'Whatcha mean?', 'Pachinko Luck', 'Yeah, Yeah', 'What up. What up. What uuuuuup', 
 'What the hell, man', 'Hey, that\'s pretty good!', 'Do it', 'Yeah, alright', 'Now hold on', 'China, china, china', 'Wait a minute', 'You trying to play sum Fornite?', 
@@ -116,7 +120,7 @@ async def bday(ctx, user: discord.User=None):
 		
 @bot.command()
 async def help(ctx):
-	await ctx.channel.send('List of commands for Chris Bico Bot:\n-cbhello: Say hello!\n-cbbico: <:ChrisBico:662926031547662336>\n-cbat: But where you at?\n-cbcp: Get a random catchphrase. Collect \'em all! (More will be added)\n-cbpic: Get a random photo of Chris Rico. Catch \'em all! (More will be added)\n-cbcom: Compliment Chris Rico!\n-cbdate: BicoBot tells us the day of the week!\n-cbtomorrow: Bicobot tells us what day of week is tomorrow\n-cbeightball: Bicobot will act like a 8ball\n-cbbday: Celebrate someone\'s birthday! <:partying_face:751503332652089454>\n-cbbye: BicoBot says goodbye!')		
+	await ctx.channel.send(helpText)
 	
 
 bot.run('Put Bot Token Here')
